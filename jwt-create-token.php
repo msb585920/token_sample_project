@@ -20,7 +20,10 @@ $payload = [
 
 $jwt = JWT::encode($payload, $key, 'HS256');
 
-echo $jwt;
-echo '</br>';
-$decoded = JWT::decode($jwt, new Key($key, 'HS256'));
-print_r($decoded);
+$jwt = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3fQ.zKDnMHwifrYFlpkgBgYxTzDmlXmos1eLbiP2SWMfpj4';
+try{
+    $decoded = JWT::decode($jwt, new Key($key, 'HS256'));
+    print_r($decoded);
+}catch(Exception $e){
+    echo "Error : " . $e->getMessage();
+}
